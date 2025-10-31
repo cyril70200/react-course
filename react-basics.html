@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="react-basics.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>
+    <script type="text/babel">
+      const button = <button>Click Me</button>;
+      const paragraph = <p>This is a simple React application.</p>;
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(
+        <div>
+          <h1>Welcome to SuperSimpleDev React Course by CF</h1>
+          {paragraph}
+          {button}
+        </div>
+      );
+    </script>
+  </body>
+</html>
