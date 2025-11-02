@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="react-basics.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>
+    <script type="text/babel">
+      function ChatInput() {
+        return (
+          <div>
+            <input
+                type="text"
+                size="30"
+                placeholder="Type your message..."
+            />
+            <button>Send</button>
+          </div>
+        );
+      }
+      function ChatMessage({message, sender}) {
+        return (
+          <div>
+            {sender === "robot" && (
+              <img src="robot.png" width="30" alt="Robot" />
+            )}
+            {message}
+            {sender === "user" && (
+              <img src="user.png" width="30" alt="User" />
+            )}
+          </div>
+        );
+      }
+
+    function App() {
+        const chatMessages = [
+          { sender: "user", message: "Hello chatbot" },
+          { sender: "robot", message: "Hello! How can I assist you today?" },
+          { sender: "user", message: "Can you tell me today's date?" },
+          { sender: "robot", message: "Today's date is 2 Nov 2025" },
+        ];
+
+        chatMessages.map((chatMessage, index) => (
+          <ChatMessage
+            key={index}
+            sender={chatMessage.sender}
+            message={chatMessage.message}
+          />
+        ));
+
+        return (
+          <div>
+            <h1>Chat with SuperBot</h1>
+            <ChatInput />
+            <ChatMessage
+                sender="user"
+                message="Hello chatbot"
+            />
+            <ChatMessage
+                sender="robot"
+                message="Hello! How can I assist you today?"
+            />
+            <ChatMessage
+                sender="user"
+                message="Can you tell me today's date?"
+            />
+            <ChatMessage
+                sender="robot"
+                message="Today's date is 2 Nov 2025"
+            />
+          </div>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
