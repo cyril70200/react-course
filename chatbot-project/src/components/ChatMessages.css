@@ -1,0 +1,10 @@
+.chat-messages-container {
+    flex-grow: 1;
+    padding: 16px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    display: flex;
+    border: solid 2px #ccc;
+    border-radius: 8px;
+    flex-direction: column;
+}
