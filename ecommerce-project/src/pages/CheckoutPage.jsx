@@ -46,15 +46,14 @@ export function CheckoutPage({ cart }) {
                     <div className="order-summary">
                         {deliveryOptions.length > 0 && cart.map((cartItem) => {
                             const selectedDeliveryOption = deliveryOptions
-                                .find((option) => {
-                                    return option.id === cartItem.selectedDeliveryOptionId;
+                                .find((deliveryOption) => {
+                                    return deliveryOption.id === cartItem.deliveryOptionId;
                                 });
+                                console.log("Selected Delivery Option:", selectedDeliveryOption);
                             return (
                                 <div key={cartItem.productId} className="cart-item-container">
                                     <div className="delivery-date">
-                                        Delivery date:
-                                        {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs)
-                                            .format('dddd, MMMM D') }
+                                        Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
                                     </div>
 
                                     <div className="cart-item-details-grid">
