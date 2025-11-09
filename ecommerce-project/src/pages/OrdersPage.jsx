@@ -1,6 +1,6 @@
 import axios from "axios";
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Header } from "../components/Header.jsx";
 import { formatMoney } from "../utils/money";
 import './OrdersPage.css'
@@ -140,20 +140,20 @@ export function OrdersPage({ cart }) {
                                 <div className="order-details-grid">
                                     {order.products.map((orderProduct) => {
                                         return (
-                                            <>
+                                            <Fragment key={orderProduct.id}>
                                                 <div className="product-image-container">
-                                                    <img src="images/products/athletic-cotton-socks-6-pairs.jpg" />
+                                                    <img src={orderProduct.product.image} />
                                                 </div>
 
                                                 <div className="product-details">
                                                     <div className="product-name">
-                                                        Black and Gray Athletic Cotton Socks - 6 Pairs
+                                                        {orderProduct.product.name}
                                                     </div>
                                                     <div className="product-delivery-date">
-                                                        Arriving on: August 15
+                                                        Arriving on: {dayjs(orderProduct.estimatedDeliveryTimeMs).format('MMMM D, YYYY')}
                                                     </div>
                                                     <div className="product-quantity">
-                                                        Quantity: 1
+                                                        Quantity: {orderProduct.quantity}
                                                     </div>
                                                     <button className="buy-again-button button-primary">
                                                         <img className="buy-again-icon" src="images/icons/buy-again.png" />
@@ -168,37 +168,9 @@ export function OrdersPage({ cart }) {
                                                         </button>
                                                     </a>
                                                 </div>
-                                            </>
+                                            </Fragment>
                                         );
                                     })}
-
-                                    <div className="product-image-container">
-                                        <img src="images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg" />
-                                    </div>
-
-                                    <div className="product-details">
-                                        <div className="product-name">
-                                            Adults Plain Cotton T-Shirt - 2 Pack
-                                        </div>
-                                        <div className="product-delivery-date">
-                                            Arriving on: August 19
-                                        </div>
-                                        <div className="product-quantity">
-                                            Quantity: 2
-                                        </div>
-                                        <button className="buy-again-button button-primary">
-                                            <img className="buy-again-icon" src="images/icons/buy-again.png" />
-                                            <span className="buy-again-message">Add to Cart</span>
-                                        </button>
-                                    </div>
-
-                                    <div className="product-actions">
-                                        <a href="/tracking">
-                                            <button className="track-package-button button-secondary">
-                                                Track package
-                                            </button>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         );
